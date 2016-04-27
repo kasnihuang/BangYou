@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:id="@+id/tab_main_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:drawableTop="@mipmap/ic_launcher"
+        android:textColor="@color/launch_bar_text_color_selector"
+        android:textSize="@dimen/font_13"
+        android:paddingTop="@dimen/dimen_5"
+        android:paddingRight="@dimen/dimen_15"
+        android:layout_marginBottom="@dimen/dimen_5"
+        android:text="Contacts"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/tab_indicator_counter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/tab_item_indicator"
+        android:gravity="center"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:singleLine="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@id/tab_main_text"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/font_13"
+        android:visibility="gone"/>
+
+</merge>
