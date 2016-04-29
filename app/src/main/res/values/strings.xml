@@ -1,4 +1,5 @@
 <resources>
+    <!--Main-->
     <string name="app_name">BangYou</string>
     <string name="tab_message">消息</string>
     <string name="tab_order">订单</string>
@@ -6,4 +7,28 @@
     <string name="title_my_profile">个人信息</string>
     <string name="menu_more_than_99">99+</string>
 
+    <!--Message-->
+    <string name="message_rob_order">抢单</string>
+
+    <!--Order-->
+    <string name="order_pending_handle">待处理订单</string>
+    <string name="order_type_pending_handle">待处理单</string>
+    <string name="order_pending_accept">待接订单</string>
+    <string name="order_type_pending_accept">待接单</string>
+    <string name="order_accepted">已接订单</string>
+    <string name="order_type_accepted">已接单</string>
+    <string name="order_done">完工订单</string>
+    <string name="order_type_done">完工单</string>
+    <string name="order_accept">接收</string>
+    <string name="order_refuse">放弃</string>
+    <string name="order_amount_accept">累计接单</string>
+    <string name="order_amount_done">累计完成</string>
+    <string name="order_amount_num">%1s单</string>
+    <string name="order_sign">服务导航</string>
+
+    <!--My profile-->
+    <string name="my_profile_info">基本信息</string>
+    <string name="my_profile_server">服务信息</string>
+    <string name="my_profile_area">服务区域</string>
+    <string name="my_profile_bank_card">我的银行卡</string>
 </resources>

@@ -17,8 +17,8 @@ import com.bangyou.android.R;
  */
 public class TabView extends RelativeLayout {
     private static final String TAG = "RCTabView";
-    private static final int MAX_MESSAGES_COUNT_TO_BE_DISPLAYED = 99;
-    private static final int CHANGE_MARGIN_LIMIT = 10;
+    public static final int MAX_MESSAGES_COUNT_TO_BE_DISPLAYED = 99;
+    public static final int CHANGE_MARGIN_LIMIT = 10;
     private TextView mTvTab;
 
     public TabView(Context context) {
