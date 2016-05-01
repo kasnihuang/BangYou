@@ -8,10 +8,12 @@ public class MessageInfo {
     public static final int MSG_TYPE_NORMAL = 1;
 
     private String messageContent;
+    private String messageDetail;
     private int messageType;
 
-    public MessageInfo(String messageContent, int messageType) {
+    public MessageInfo(String messageContent, String messageDetail, int messageType) {
         this.messageContent = messageContent;
+        this.messageDetail = messageDetail;
         this.messageType = messageType;
     }
 
@@ -29,5 +31,13 @@ public class MessageInfo {
 
     public void setMessageContent(String messageContent) {
         this.messageContent = messageContent;
+    }
+
+    public String getMessageDetail() {
+        return messageDetail;
+    }
+
+    public void setMessageDetail(String messageDetail) {
+        this.messageDetail = messageDetail;
     }
 }

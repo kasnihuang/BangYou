@@ -73,12 +73,12 @@ public class MainActivity extends BaseFragmentActivity implements SmartTabLayout
                 break;
             case TAB_ORDER:
                 tabView.updateTableName(R.string.tab_order);
-                tabView.updateTopIcon(this, R.drawable.tab_message_foreground);
+                tabView.updateTopIcon(this, R.drawable.tab_order_foreground);
                 tabView.updateIndicator(3);
                 break;
             case TAB_MY_PROFILE:
                 tabView.updateTableName(R.string.tab_my_profile);
-                tabView.updateTopIcon(this, R.drawable.tab_message_foreground);
+                tabView.updateTopIcon(this, R.drawable.tab_my_profile_foreground);
                 break;
 //			default:
 //				throw new IllegalStateException("Invalid position: " + position);

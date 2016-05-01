@@ -2,7 +2,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:minHeight="@dimen/dimen_55">
+    android:minHeight="@dimen/dimen_65"
+    android:background="@android:color/white"
+    android:clickable="true"
+    android:focusable="true"
+    android:addStatesFromChildren="true">
 
     <ImageView
         android:id="@+id/iv_icon"
@@ -17,14 +21,16 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/iv_icon"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="@dimen/dimen_5"
+        android:textColor="@color/palette_black_1"
+        android:layout_marginLeft="@dimen/dimen_10"
         android:textSize="@dimen/font_18"/>
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_marginRight="@dimen/dimen_5"
-        android:layout_alignParentRight="true"/>
+        android:layout_marginRight="@dimen/dimen_10"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/icon_arrow_right"/>
 
 </RelativeLayout>

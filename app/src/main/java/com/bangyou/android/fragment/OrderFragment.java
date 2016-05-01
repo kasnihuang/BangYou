@@ -60,10 +60,10 @@ public class OrderFragment extends BaseFragment {
 
     private void generateOrderTypeList() {
         mOrderTypeList = new ArrayList<>();
-        mOrderTypeList.add(new OrderTypeInfo(R.drawable.launch_bar_btn_message_normal, R.string.order_type_pending_handle, 3));
-        mOrderTypeList.add(new OrderTypeInfo(R.drawable.launch_bar_btn_message_normal, R.string.order_type_pending_accept, 13));
-        mOrderTypeList.add(new OrderTypeInfo(R.drawable.launch_bar_btn_message_normal, R.string.order_type_accepted, 3));
-        mOrderTypeList.add(new OrderTypeInfo(R.drawable.launch_bar_btn_message_normal, R.string.order_type_done, 3));
+        mOrderTypeList.add(new OrderTypeInfo(R.drawable.icon_order_pending_handle, R.string.order_type_pending_handle, 3));
+        mOrderTypeList.add(new OrderTypeInfo(R.drawable.icon_order_pending_accept, R.string.order_type_pending_accept, 13));
+        mOrderTypeList.add(new OrderTypeInfo(R.drawable.icon_order_accepted, R.string.order_type_accepted, 3));
+        mOrderTypeList.add(new OrderTypeInfo(R.drawable.icon_order_done, R.string.order_type_done, 3));
     }
 
     /**

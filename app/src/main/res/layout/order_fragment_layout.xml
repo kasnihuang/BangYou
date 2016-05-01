@@ -14,7 +14,8 @@
         android:layout_width="match_parent"
         android:layout_below="@id/title_bar"
         android:layout_height="@dimen/dimen_65"
-        android:gravity="center">
+        android:gravity="center"
+        android:background="@android:color/white">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -27,13 +28,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="156单"
-                android:textSize="@dimen/dimen_15" />
+                android:textSize="@dimen/dimen_15"
+                android:textColor="@color/palette_black_3"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/order_amount_accept"
-                android:textSize="@dimen/font_18" />
+                android:textSize="@dimen/font_18"
+                android:textColor="@color/palette_black_3"/>
         </LinearLayout>
 
         <LinearLayout
@@ -47,13 +50,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="156单"
-                android:textSize="@dimen/dimen_15" />
+                android:textSize="@dimen/dimen_15"
+                android:textColor="@color/palette_black_3"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/order_amount_done"
-                android:textSize="@dimen/font_18" />
+                android:textSize="@dimen/font_18"
+                android:textColor="@color/palette_black_3"/>
         </LinearLayout>
     </LinearLayout>
 
@@ -70,19 +75,21 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/launch_bar_btn_message_normal" />
+            android:src="@drawable/icon_order_left" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/dimen_5"
             android:layout_marginRight="@dimen/dimen_5"
-            android:text="@string/order_sign" />
+            android:text="@string/order_sign"
+            android:textSize="@dimen/font_22"
+            android:textColor="@color/palette_red_1"/>
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/launch_bar_btn_message_normal" />
+            android:src="@drawable/icon_order_right" />
     </LinearLayout>
 
     <GridView

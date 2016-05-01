@@ -27,8 +27,8 @@ public class MyProfileFragment extends BaseFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Resources resources = getResources();
-        mIcons = new int[]{R.drawable.launch_bar_btn_message_normal, R.drawable.launch_bar_btn_message_normal,
-                R.drawable.launch_bar_btn_message_normal, R.drawable.launch_bar_btn_message_normal};
+        mIcons = new int[]{R.drawable.icon_basic_info, R.drawable.icon_service_info,
+                R.drawable.icon_service_area, R.drawable.icon_my_bank};
         mNames = new String[]{resources.getString(R.string.my_profile_info), resources.getString(R.string.my_profile_server),
                 resources.getString(R.string.my_profile_area), resources.getString(R.string.my_profile_bank_card)};
     }

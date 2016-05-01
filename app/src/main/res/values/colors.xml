@@ -7,6 +7,13 @@
     <color name="palette_gray_1">#E5E6E7</color>
 
     <color name="palette_green_1">#00B0BC</color>
-    <color name="palette_green_2">#32A767</color>
-    <color name="palette_green_3">#7EC5B5</color>
+    <color name="palette_green_2">#B2E3D0</color>
+    <color name="palette_green_3">#3FB88C</color>
+
+    <color name="palette_black_1">#646464</color>
+    <color name="palette_black_2">#9FA7B4</color>
+    <color name="palette_black_3">#797979</color>
+    <color name="palette_black_4">#39393F</color>
+
+    <color name="palette_red_1">#ED5435</color>
 </resources>

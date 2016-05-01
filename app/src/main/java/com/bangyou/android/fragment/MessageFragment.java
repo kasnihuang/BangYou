@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -58,12 +59,12 @@ public class MessageFragment extends BaseFragment {
 
     private void initData() {
         //TODO 如果正式数据时,且更新数据放到onResume中,如果数据是全新的数据,记得先清除当前数据,因为tab切换到第三屏再切回来时,onResume会被调用
-        mMessageInfoList.add(new MessageInfo("你已完成订单:乐视TV机架安装1", MessageInfo.MSG_TYPE_NORMAL));
-        MessageInfo info = new MessageInfo("XX品牌代言服务", MessageInfo.MSG_TYPE_ROB);
+        mMessageInfoList.add(new MessageInfo("你已完成订单:乐视TV机架安装1", "新安装", MessageInfo.MSG_TYPE_NORMAL));
+        MessageInfo info = new MessageInfo("XX品牌代言服务", "新安装", MessageInfo.MSG_TYPE_ROB);
         mMessageInfoList.add(0, info);
-        mMessageInfoList.add(new MessageInfo("你已完成订单:乐视xxxxxxxxxxxxxxxxxxTV机架安装2", MessageInfo.MSG_TYPE_NORMAL));
-        mMessageInfoList.add(new MessageInfo("你已完成订单:乐视TV机架安装3", MessageInfo.MSG_TYPE_NORMAL));
-        mMessageInfoList.add(new MessageInfo("你已完成订单:乐视TV机架安装4", MessageInfo.MSG_TYPE_NORMAL));
+        mMessageInfoList.add(new MessageInfo("你已完成订单:乐视xxxxxxxxxxxxxxxxxxTV机架安装2", "移机, 安装", MessageInfo.MSG_TYPE_NORMAL));
+        mMessageInfoList.add(new MessageInfo("你已完成订单:乐视TV机架安装3", "消息概要", MessageInfo.MSG_TYPE_NORMAL));
+        mMessageInfoList.add(new MessageInfo("你已完成订单:乐视TV机架安装4", "安装", MessageInfo.MSG_TYPE_NORMAL));
         mMessageAdapter.updateData(mMessageInfoList);
     }
 
@@ -102,7 +103,10 @@ public class MessageFragment extends BaseFragment {
             if (convertView == null) {
                 viewHolder = new ViewHolder();
                 convertView = inflater.inflate(R.layout.message_item_layout, null);
+                viewHolder.ivIcon = (ImageView) convertView.findViewById(R.id.iv_icon);
                 viewHolder.tvContent = (TextView) convertView.findViewById(R.id.tv_message_content);
+                viewHolder.tvDetail = (TextView) convertView.findViewById(R.id.tv_message_detail);
+                viewHolder.tvType = (TextView) convertView.findViewById(R.id.tv_message_type);
                 viewHolder.btnRob = (Button) convertView.findViewById(R.id.btn_rob_order);
                 convertView.setTag(viewHolder);
             } else {
@@ -110,7 +114,10 @@ public class MessageFragment extends BaseFragment {
             }
             MessageInfo info = messageInfos.get(position);
             viewHolder.tvContent.setText(info.getMessageContent());
+            viewHolder.tvDetail.setText(info.getMessageDetail());
             if (info.getMessageType() == MessageInfo.MSG_TYPE_ROB) {
+                viewHolder.ivIcon.setImageResource(R.drawable.icon_message);
+                viewHolder.tvType.setText(R.string.tab_order);
                 viewHolder.btnRob.setVisibility(View.VISIBLE);
                 viewHolder.btnRob.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -120,13 +127,18 @@ public class MessageFragment extends BaseFragment {
                     }
                 });
             } else {
+                viewHolder.tvType.setText(R.string.tab_message);
+                viewHolder.ivIcon.setImageResource(R.drawable.icon_order);
                 viewHolder.btnRob.setVisibility(View.GONE);
             }
             return convertView;
         }
 
         private class ViewHolder {
+            public ImageView ivIcon;
             public TextView tvContent;
+            public TextView tvDetail;
+            public TextView tvType;
             public Button btnRob;
         }
     }
