@@ -11,5 +11,11 @@ public class Constants {
     public static final int ORDER_TYPE_PENDING_ACCEPT = 1;
     public static final int ORDER_TYPE_ACCEPTED = 2;
     public static final int ORDER_TYPE_DONE = 3;
+    public static final int ORDER_TYPE_GRAB = 4;
 
+
+    /*
+     time  fomate
+     */
+    public static final String TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
 }

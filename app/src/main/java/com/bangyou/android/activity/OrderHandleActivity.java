@@ -155,7 +155,7 @@ public class OrderHandleActivity extends BaseActivity implements View.OnClickLis
             }
             OrderInfo info = messageInfos.get(position);
             updateTypeView(info.getOrderType(), viewHolder.acceptHandleView, viewHolder.callView);
-            viewHolder.tvContent.setText(info.getOrderContent());
+            viewHolder.tvContent.setText(info.getOrderTitle());
 
             return convertView;
         }

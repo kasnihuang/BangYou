@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="messages">
+        <item>乐视TV进驻帮友平台|乐视TV挂架进驻邦有平台</item>
+        <item>你已经升级VIP 2 级|截止目前您已经完成120单服务安装...</item>
+    </string-array>
+
+    <string-array name="orders">
+        <item>乐视TV机架安装</item>
+        <item>乐歌 (Loctek)机架安装</item>
+        <item>乐歌 (Loctek)机架安装</item>
+        <item>乐歌 (Loctek)机架安装</item>
+    </string-array>
+
+
+    <string-array name="orders_addr">
+        <item>浦东新区新环北路1080弄1号楼1203</item>
+        <item>浦东新区唐镇路1080弄1号楼1203</item>
+        <item>上海市黄浦区西藏中路585号6楼</item>
+    </string-array>
+
+    <string-array name="contacters">
+        <item>刘先生</item>
+        <item>杨先生</item>
+        <item>仲先生</item>
+        <item>张先生</item>
+        <item>倪小姐</item>
+        <item>于小姐</item>
+    </string-array>
+
+    <string-array name="contact_time">
+        <item>2016-5-21 9:22:45</item>
+        <item>2016-5-21 12:22:45</item>
+        <item>2016-5-21 15:22:45</item>
+        <item>2016-5-21 15:22:45</item>
+        <item>2016-5-21 15:22:45</item>
+        <item>2016-5-21 15:22:45</item>
+    </string-array>
+
+
+
+    <string-array name="telNo">
+        <item>13816428071</item>
+        <item>15202171861</item>
+        <item>18701726146</item>
+        <item>13816428071</item>
+        <item>13816428071</item>
+        <item>13816428071</item>
+        <item>13816428071</item>
+    </string-array>
+
+
+</resources>

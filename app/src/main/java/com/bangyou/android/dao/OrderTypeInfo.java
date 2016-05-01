@@ -14,6 +14,8 @@ public class OrderTypeInfo {
         this.count = count;
     }
 
+
+
     public int getDrawableId() {
         return drawableId;
     }
