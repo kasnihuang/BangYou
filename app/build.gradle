@@ -28,6 +28,9 @@ dependencies {
     //Optional: see how to use the utility.
     compile 'com.ogaclejapan.smarttablayout:utils-v4:1.6.0@aar'
 
+    compile 'com.alibaba:fastjson:1.1.48.android'
+    compile 'net.danlew:android.joda:2.9.3'
+
     //Optional: see how to use the utility.
 //    compile 'com.ogaclejapan.smarttablayout:utils-v13:1.6.0@aar'
 }
