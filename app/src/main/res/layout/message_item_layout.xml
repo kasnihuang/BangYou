@@ -23,7 +23,6 @@
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:layout_marginRight="@dimen/dimen_10"
-        android:duplicateParentState="true"
         android:background="@drawable/btn_green_bg"
         android:text="@string/message_rob_order"
         android:textColor="@android:color/white"
