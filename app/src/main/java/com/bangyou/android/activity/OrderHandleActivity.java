@@ -94,19 +94,19 @@ public class OrderHandleActivity extends BaseActivity implements View.OnClickLis
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.btn_call:
-
-                break;
-
-            case R.id.btn_accept:
-
-                break;
-
-            case R.id.btn_refuse:
-
-                break;
-        }
+//        switch (v.getId()) {
+//            case R.id.btn_call:
+//
+//                break;
+//
+//            case R.id.btn_accept:
+//
+//                break;
+//
+//            case R.id.btn_refuse:
+//
+//                break;
+//        }
     }
 
     private class MessageAdapter extends BaseAdapter {
@@ -145,10 +145,10 @@ public class OrderHandleActivity extends BaseActivity implements View.OnClickLis
                 viewHolder = new ViewHolder();
                 convertView = inflater.inflate(R.layout.order_handle_item_layout, null);
                 viewHolder.tvContent = (TextView) convertView.findViewById(R.id.tv_order_content);
-                viewHolder.callView = convertView.findViewById(R.id.btn_call);
+             //   viewHolder.callView = convertView.findViewById(R.id.btn_call);
                 viewHolder.acceptHandleView = convertView.findViewById(R.id.layout_pending_accept);
-                viewHolder.acceptView = convertView.findViewById(R.id.btn_accept);
-                viewHolder.refuseView = convertView.findViewById(R.id.btn_refuse);
+             //   viewHolder.acceptView = convertView.findViewById(R.id.btn_accept);
+              //  viewHolder.refuseView = convertView.findViewById(R.id.btn_refuse);
                 convertView.setTag(viewHolder);
             } else {
                 viewHolder = (ViewHolder) convertView.getTag();
