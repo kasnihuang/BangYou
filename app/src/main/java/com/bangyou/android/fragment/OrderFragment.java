@@ -4,6 +4,9 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,6 +32,8 @@ import java.util.List;
 public class OrderFragment extends BaseFragment {
     private static final String TAG = "OrderFragment";
     private GridView mGvOrder;
+    private TextView mTvAccept;
+    private TextView mTvDone;
     private OrderAdapter mOrderAdapter;
     private List<OrderTypeInfo> mOrderTypeList;
 
@@ -41,11 +46,17 @@ public class OrderFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        mTvAccept = (TextView) view.findViewById(R.id.tv_accept);
+        mTvDone = (TextView) view.findViewById(R.id.tv_done);
+        updateNumOfOrder(mTvAccept, 100);
+        updateNumOfOrder(mTvDone, 80);
         mGvOrder = (GridView) view.findViewById(R.id.gv_order);
         mGvOrder.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                OrderHandleActivity.openOrderHandleActivity(mActivity, position);
+                if (position != Constants.ORDER_TYPE_DONE) {
+                    OrderHandleActivity.openOrderHandleActivity(mActivity, position);
+                }
             }
         });
         generateOrderTypeList();
@@ -64,6 +75,14 @@ public class OrderFragment extends BaseFragment {
         mOrderTypeList.add(new OrderTypeInfo(R.drawable.icon_order_pending_accept, R.string.order_type_pending_accept, 13));
         mOrderTypeList.add(new OrderTypeInfo(R.drawable.icon_order_accepted, R.string.order_type_accepted, 3));
         mOrderTypeList.add(new OrderTypeInfo(R.drawable.icon_order_done, R.string.order_type_done, 3));
+    }
+
+    //TODO 更新累计接单以及累计完成的订单数量
+    private void updateNumOfOrder(TextView textView, int count) {
+        SpannableStringBuilder builder = new SpannableStringBuilder(getString(R.string.order_amount_num, count));
+        ForegroundColorSpan foregroundColorSpan = new ForegroundColorSpan(getResources().getColor(R.color.palette_red_1));
+        builder.setSpan(foregroundColorSpan, 0, builder.length() - 1, Spanned.SPAN_EXCLUSIVE_INCLUSIVE);
+        textView.setText(builder);
     }
 
     /**

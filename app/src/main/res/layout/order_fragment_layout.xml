@@ -25,6 +25,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/tv_accept"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="156单"
@@ -47,6 +48,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/tv_done"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="156单"

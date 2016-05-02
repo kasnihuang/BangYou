@@ -24,7 +24,13 @@
     <string name="order_amount_accept">累计接单</string>
     <string name="order_amount_done">累计完成</string>
     <string name="order_amount_num">%1s单</string>
-    <string name="order_sign">服务导航</string>
+    <string name="order_sign">服务导航</string>p
+    <string name="order_install_time">安装时间: %1s</string>
+    <string name="order_preinstall_time">预计安装时间: %1s</string>
+    <string name="order_install_address">地址: %1s</string>
+    <string name="order_has_contact">已联系客户</string>
+    <string name="order_not_contact">未联系客户</string>
+    <string name="order_not_install">未上门安装</string>
 
     <!--My profile-->
     <string name="my_profile_info">基本信息</string>

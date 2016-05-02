@@ -8,14 +8,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.bangyou.android.R;
 import com.bangyou.android.dao.OrderInfo;
 import com.bangyou.android.utils.Constants;
+import com.bangyou.android.utils.Utils;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -85,10 +88,10 @@ public class OrderHandleActivity extends BaseActivity implements View.OnClickLis
     }
 
     private void initData() {
-        mOrderInfoList.add(new OrderInfo("你已完成订单:乐视TV机架安装1", mOrderType));
-        mOrderInfoList.add(new OrderInfo("你已完成订单:乐视xxxxxxxxxxxxxxxxxxTV机架安装2", mOrderType));
-        mOrderInfoList.add(new OrderInfo("你已完成订单:乐视TV机架安装3", mOrderType));
-        mOrderInfoList.add(new OrderInfo("你已完成订单:乐视TV机架安装4", mOrderType));
+        mOrderInfoList.add(new OrderInfo("乐视TV机架安装1", new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis()), false, false, mOrderType));
+        mOrderInfoList.add(new OrderInfo("乐视xxxxxxxxxxxxxxxxxxTV机架安装2", new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis()), true, false, mOrderType));
+        mOrderInfoList.add(new OrderInfo("乐视TV机架安装3", new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis()), true, false, mOrderType));
+        mOrderInfoList.add(new OrderInfo("乐视TV机架安装4", new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis()), false, false, mOrderType));
         mOrderHandleAdapter.updateData(mOrderInfoList);
     }
 
@@ -144,47 +147,69 @@ public class OrderHandleActivity extends BaseActivity implements View.OnClickLis
             if (convertView == null) {
                 viewHolder = new ViewHolder();
                 convertView = inflater.inflate(R.layout.order_handle_item_layout, null);
-                viewHolder.tvContent = (TextView) convertView.findViewById(R.id.tv_order_content);
-             //   viewHolder.callView = convertView.findViewById(R.id.btn_call);
-                viewHolder.acceptHandleView = convertView.findViewById(R.id.layout_pending_accept);
-             //   viewHolder.acceptView = convertView.findViewById(R.id.btn_accept);
-              //  viewHolder.refuseView = convertView.findViewById(R.id.btn_refuse);
+                viewHolder.ivIcon = (ImageView) convertView.findViewById(R.id.iv_icon);
+                viewHolder.tvTitle = (TextView) convertView.findViewById(R.id.tv_order_title);
+                viewHolder.tvTime = (TextView) convertView.findViewById(R.id.tv_order_timer_show);
+                viewHolder.tvAddress = (TextView) convertView.findViewById(R.id.tv_order_addr_show);
+                viewHolder.tvContact = (TextView) convertView.findViewById(R.id.tv_order_contact_progress);
+                viewHolder.tvInstall = (TextView) convertView.findViewById(R.id.tv_order_install_progress);
+                viewHolder.mProgressView = convertView.findViewById(R.id.layout_progress);
                 convertView.setTag(viewHolder);
             } else {
                 viewHolder = (ViewHolder) convertView.getTag();
             }
             OrderInfo info = messageInfos.get(position);
-            updateTypeView(info.getOrderType(), viewHolder.acceptHandleView, viewHolder.callView);
-            viewHolder.tvContent.setText(info.getOrderTitle());
-
+            viewHolder.tvTitle.setText(info.getOrderTitle());
+            updateInstallTime(mOrderType, viewHolder.tvTime, info.getInstallTime());
+            updateTypeView(mOrderType, viewHolder.ivIcon, viewHolder.mProgressView);
+            viewHolder.tvAddress.setText(getString(R.string.order_install_address, info.getAddr()));
+            viewHolder.tvContact.setText(info.isContacted() ? getString(R.string.order_has_contact) : getString(R.string.order_not_contact));
+            viewHolder.tvInstall.setText(getString(R.string.order_not_install));
             return convertView;
         }
 
         private class ViewHolder {
-            public TextView tvContent;
-            public View callView;
-            public View acceptHandleView;
-            public View acceptView;
-            public View refuseView;
+            public ImageView ivIcon;
+            public TextView tvTitle;
+            public TextView tvTime;
+            public TextView tvAddress;
+            public TextView tvContact;
+            public TextView tvInstall;
+            public View mProgressView;
         }
 
-        private void updateTypeView(int orderType, View accepHandletView, View callView) {
+        private void updateInstallTime(int orderType, TextView textView, Date time) {
             switch (orderType) {
                 case Constants.ORDER_TYPE_PENDING_HANDLE:
-                    accepHandletView.setVisibility(View.GONE);
-                    callView.setVisibility(View.VISIBLE);
+                    textView.setText(getString(R.string.order_install_time, Utils.ConverToString(time)));
                     break;
 
                 case Constants.ORDER_TYPE_PENDING_ACCEPT:
-                    accepHandletView.setVisibility(View.VISIBLE);
-                    callView.setVisibility(View.GONE);
+                    textView.setText(getString(R.string.order_install_time, Utils.ConverToString(time)));
                     break;
 
                 case Constants.ORDER_TYPE_ACCEPTED:
-                case Constants.ORDER_TYPE_DONE:
-                    accepHandletView.setVisibility(View.GONE);
-                    callView.setVisibility(View.GONE);
+                    textView.setText(getString(R.string.order_preinstall_time, Utils.ConverToString(time)));
                     break;
+//                case Constants.ORDER_TYPE_DONE:
+            }
+        }
+
+        private void updateTypeView(int orderType, ImageView imageView, View view) {
+            switch (orderType) {
+                case Constants.ORDER_TYPE_PENDING_HANDLE:
+                    imageView.setImageResource(R.drawable.icon_order_list_pending_handle);
+                    view.setVisibility(View.VISIBLE);
+                    break;
+
+                case Constants.ORDER_TYPE_PENDING_ACCEPT:
+                    imageView.setImageResource(R.drawable.icon_order_list_pending_accept);
+                    break;
+
+                case Constants.ORDER_TYPE_ACCEPTED:
+                    imageView.setImageResource(R.drawable.icon_order_list_accepted);
+                    break;
+//                case Constants.ORDER_TYPE_DONE:
             }
         }
     }

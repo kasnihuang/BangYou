@@ -10,7 +10,9 @@ import java.util.Date;
 public class OrderInfo {
     private String orderTitle;
     private int orderType;
-    public OrderInfo(){}
+
+    public OrderInfo() {
+    }
 
     public String getContactUser() {
         return contactUser;
@@ -18,6 +20,14 @@ public class OrderInfo {
 
     public void setContactUser(String contactUser) {
         this.contactUser = contactUser;
+    }
+
+    public boolean isInstalled() {
+        return installed;
+    }
+
+    public void setInstalled(boolean installed) {
+        this.installed = installed;
     }
 
     public boolean isContacted() {
@@ -30,26 +40,27 @@ public class OrderInfo {
 
     private String uuid;
 
-    public enum State{
+    public enum State {
         NO_ACCEPTTED,
         ACCEPTED
     }
 
-    public enum WallType{
+    public enum WallType {
         MarbleWall,    //大理石墙
         ceramicileWall,     //瓷砖墙
         WoodenWall,   //木板墙
         BearingWall,  //称重墙
         otherWall
     }
-    public enum SkuType{
+
+    public enum SkuType {
         FunctionPendant,
         NoramlPendant,
         HangerPendant,
         PushChairPendant
     }
 
-    public enum TvSize{
+    public enum TvSize {
         SevenTeenForty,
         Forty2Fifty,
         Fifty2Sixty,
@@ -59,16 +70,27 @@ public class OrderInfo {
     @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     public Date installTime;
     @JSONField(format = "yyyy-MM-dd HH:mm:ss")
-    public Date  contactTime;
+    public Date contactTime;
+    private int drawableId;
+    private String addr;
+    private String teleNo;
+    private String contactUser;
+    private boolean contacted;
+    private boolean installed;
 
-    private String    addr;
-    private String    teleNo;
-    private String   contactUser;
-    private boolean   contacted;
+    private WallType wallType;
+    private SkuType skyType;
+    private TvSize tvSize;
 
-    private WallType  wallType;
-    private SkuType   skyType;
-    private TvSize    tvSize;
+    public OrderInfo(String orderTitle, Date installTime, Date contactTime, boolean contacted, boolean installed, int orderType) {
+        this.orderTitle = orderTitle;
+        this.installTime = installTime;
+        this.contactTime = contactTime;
+        this.contacted = contacted;
+        this.installed = installed;
+        this.orderType = orderType;
+        this.addr = "上海浦东新区";
+    }
 
     public String getAddr() {
         return addr;
