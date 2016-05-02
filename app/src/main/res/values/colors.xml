@@ -5,10 +5,14 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="palette_gray_1">#E5E6E7</color>
+    <color name="palette_gray_3">#C2C2C2</color>
 
     <color name="palette_green_1">#00B0BC</color>
     <color name="palette_green_2">#B2E3D0</color>
     <color name="palette_green_3">#3FB88C</color>
+
+    <color name="palette_blue_1">#14B0BD</color>
+    <color name="palette_blue_2">#8DEDF5</color>
 
     <color name="palette_black_1">#646464</color>
     <color name="palette_black_2">#9FA7B4</color>
@@ -18,6 +22,7 @@
     <color name="palette_black_6">#8b8b8b</color>
 
     <color name="palette_red_1">#ED5435</color>
+    <color name="palette_red_2">#EAAC9F</color>
 
     <color name="palette_gray_2">#9fa7b4</color>
 </resources>

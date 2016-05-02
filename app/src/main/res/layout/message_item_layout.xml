@@ -2,10 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:minHeight="@dimen/dimen_65"
-    android:clickable="true"
-    android:focusable="true"
-    android:addStatesFromChildren="true">
+    android:minHeight="@dimen/dimen_65">
 
     <ImageView
         android:id="@+id/iv_icon"

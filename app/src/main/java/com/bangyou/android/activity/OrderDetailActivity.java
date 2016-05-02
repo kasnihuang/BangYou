@@ -1,21 +1,17 @@
 package com.bangyou.android.activity;
 
-import android.app.AlertDialog;
-import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.TextView;
 
 import com.bangyou.android.R;
 import com.bangyou.android.dao.OrderInfo;
 import com.bangyou.android.utils.Constants;
-
-import java.util.Calendar;
+import com.bangyou.android.widget.DateTimeDialogPicker;
 
 /**
  * Created by kasni.huang on 4/26/16.
@@ -152,7 +148,11 @@ public class OrderDetailActivity extends BaseActivity implements View.OnClickLis
                 break;
 
             case R.id.layout_time:
-                Calendar calendarFrom = Calendar.getInstance();
+                String[] time = mTvPreInstallTime.getText().toString().split("-");
+                DateTimeDialogPicker dateTimePicKDialog = new DateTimeDialogPicker(
+                        this, time[0]);
+                dateTimePicKDialog.dateTimePicKDialog(mTvPreInstallTime);
+                /*Calendar calendarFrom = Calendar.getInstance();
                 DatePickerDialog datePickerDialogFrom = new DatePickerDialog(this, AlertDialog.THEME_HOLO_LIGHT, new DatePickerDialog.OnDateSetListener() {
                     @Override
 
@@ -166,7 +166,7 @@ public class OrderDetailActivity extends BaseActivity implements View.OnClickLis
                 }, calendarFrom.get(Calendar.YEAR), calendarFrom.get(Calendar.MONTH),
                         calendarFrom.get(Calendar.DAY_OF_MONTH));
                 datePickerDialogFrom.getDatePicker().setCalendarViewShown(false);
-                datePickerDialogFrom.show();
+                datePickerDialogFrom.show();*/
                 break;
 
             case R.id.btn_accept:

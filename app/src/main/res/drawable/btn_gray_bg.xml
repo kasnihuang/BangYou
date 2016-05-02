@@ -4,10 +4,7 @@
     android:shape="oval"
     android:useLevel="false">
 
-    <solid android:color="@color/palette_red_1"/>
-    <stroke
-        android:width="2dp"
-        android:color="@color/palette_red_2"/>
+    <solid android:color="@color/palette_gray_3"/>
     <size android:width="50dp"
     android:height="50dp"/>
 </shape>
