@@ -50,9 +50,12 @@ public class MessageFragment extends BaseFragment {
         mLvMessage.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(mActivity, OrderDetailActivity.class);
-                intent.putExtra(Constants.ORDER_IS_ROB, true);
-                startActivity(intent);
+                MessageInfo info = (MessageInfo) mMessageAdapter.getItem(position);
+                if (info.getMessageType() == MessageInfo.MSG_TYPE_ROB) {
+                    Intent intent = new Intent(mActivity, OrderDetailActivity.class);
+                    intent.putExtra(Constants.ORDER_IS_ROB, true);
+                    startActivity(intent);
+                }
             }
         });
         mMessageAdapter = new MessageAdapter(mActivity);
