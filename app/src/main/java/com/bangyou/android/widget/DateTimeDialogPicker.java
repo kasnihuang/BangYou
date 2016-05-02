@@ -19,12 +19,14 @@ import java.util.Calendar;
  */
 public class DateTimeDialogPicker implements DatePicker.OnDateChangedListener,
         TimePicker.OnTimeChangedListener {
+    private static final int TIME_AREA = 3;
     private DatePicker datePicker;
     private TimePicker timePicker;
     private AlertDialog ad;
     private String dateTime;
     private String initDateTime;
     private Activity activity;
+    private String endTime;
 
     /**
      * 日期时间弹出选择框构造函数
@@ -78,7 +80,7 @@ public class DateTimeDialogPicker implements DatePicker.OnDateChangedListener,
                 .setPositiveButton("设置", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
                         if (!TextUtils.isEmpty(dateTime)) {
-                            inputDate.setText(dateTime);
+                            inputDate.setText(dateTime + endTime);
                         }
                     }
                 })
@@ -107,6 +109,14 @@ public class DateTimeDialogPicker implements DatePicker.OnDateChangedListener,
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日 HH:mm");
 
         dateTime = sdf.format(calendar.getTime());
+        int minute = timePicker.getCurrentMinute();
+        String min;
+        if (minute < 10) {
+            min = "0" + minute;
+        } else {
+            min = String.valueOf(minute);
+        }
+        endTime = "-" + (timePicker.getCurrentHour() + TIME_AREA) + ":" + min;
         ad.setTitle(dateTime);
     }
 

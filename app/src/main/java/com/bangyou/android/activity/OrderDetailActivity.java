@@ -2,6 +2,7 @@ package com.bangyou.android.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -144,7 +145,9 @@ public class OrderDetailActivity extends BaseActivity implements View.OnClickLis
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.layout_phone:
-
+                Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:"+
+                    mTvPhone.getText()));
+                startActivity(intent);
                 break;
 
             case R.id.layout_time:
