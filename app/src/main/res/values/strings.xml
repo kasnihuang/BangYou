@@ -31,10 +31,26 @@
     <string name="order_has_contact">已联系客户</string>
     <string name="order_not_contact">未联系客户</string>
     <string name="order_not_install">未上门安装</string>
-
+    <string name="order_detail">订单详情</string>
+    <string name="order_detail_contact_name">联系人:</string>
+    <string name="order_detail_contact_phone">电话:</string>
+    <string name="order_detail_contact_address">地址:</string>
+    <string name="order_detail_install_scene">安装场景</string>
+    <string name="order_detail_install_time">安装时间</string>
+    <string name="order_detail_install_progress">安装进度</string>
+    <string name="order_detail_wall_type">墙体类型:</string>
+    <string name="order_detail_hang_type">挂件类型:</string>
+    <string name="order_detail_tv_size">电视尺寸:</string>
+    <string name="order_detail_preinstall_time">预计安装时间:</string>
+    <string name="order_detail_suggest_time">建议联系时间:</string>
+    <string name="order_detail_remain_time">剩余:</string>
+    <string name="order_detail_done">点击完成</string>
+    <string name="order_detail_phone_customer">联系客户</string>
+    <string name="order_detail_install">上门安装</string>
     <!--My profile-->
     <string name="my_profile_info">基本信息</string>
     <string name="my_profile_server">服务信息</string>
     <string name="my_profile_area">服务区域</string>
     <string name="my_profile_bank_card">我的银行卡</string>
+
 </resources>

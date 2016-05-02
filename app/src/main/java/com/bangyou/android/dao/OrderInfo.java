@@ -2,12 +2,13 @@ package com.bangyou.android.dao;
 
 import com.alibaba.fastjson.annotation.JSONField;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by kasni.huang on 4/27/16.
  */
-public class OrderInfo {
+public class OrderInfo implements Serializable {
     private String orderTitle;
     private int orderType;
 

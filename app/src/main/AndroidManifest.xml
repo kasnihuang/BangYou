@@ -17,6 +17,7 @@
         </activity>
 
         <activity android:name=".activity.OrderHandleActivity"/>
+        <activity android:name=".activity.OrderDetailActivity"/>
     </application>
 
 </manifest>

@@ -16,6 +16,7 @@
         android:layout_height="match_parent"
         android:layout_below="@id/title_bar"
         android:divider="@color/palette_black_2"
+        android:background="@android:color/white"
         android:dividerHeight="@dimen/dimen_0.5"/>
 
     <!--<TextView

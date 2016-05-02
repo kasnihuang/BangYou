@@ -5,6 +5,8 @@ package com.bangyou.android.utils;
  */
 public class Constants {
     public static final String ORDER_TYPE = "ORDER_TYPE";
+    public static final String ORDER_INFO = "ORDER_INFO";
+    public static final String ORDER_IS_ROB = "ORDER_IS_ROB";
 
     /*Order type*/
     public static final int ORDER_TYPE_PENDING_HANDLE = 0;

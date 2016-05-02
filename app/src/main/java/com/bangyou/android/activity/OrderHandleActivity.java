@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -27,7 +28,7 @@ import java.util.List;
 public class OrderHandleActivity extends BaseActivity implements View.OnClickListener {
     private int mOrderType = Constants.ORDER_TYPE_PENDING_HANDLE;
     private ListView mLvOrder;
-    private MessageAdapter mOrderHandleAdapter;
+    private OrderListAdapter mOrderHandleAdapter;
     private List<OrderInfo> mOrderInfoList;
 //    private View mCallView;
 //    private View mAcceptView;
@@ -48,7 +49,7 @@ public class OrderHandleActivity extends BaseActivity implements View.OnClickLis
         setContentView(R.layout.order_handle_layout);
         initViews();
         mOrderInfoList = new ArrayList<>();
-        mOrderHandleAdapter = new MessageAdapter(this);
+        mOrderHandleAdapter = new OrderListAdapter(this);
         mLvOrder.setAdapter(mOrderHandleAdapter);
     }
 
@@ -79,6 +80,12 @@ public class OrderHandleActivity extends BaseActivity implements View.OnClickLis
 
     private void initViews() {
         mLvOrder = (ListView) findViewById(R.id.lv_order);
+        mLvOrder.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                OrderDetailActivity.openOrderDetailActivity(OrderHandleActivity.this, (OrderInfo) mOrderHandleAdapter.getItem(position), false);
+            }
+        });
 //        mCallView = findViewById(R.id.btn_call);
 //        mCallView.setOnClickListener(this);
 //        mAcceptView = findViewById(R.id.layout_pending_accept);
@@ -112,11 +119,11 @@ public class OrderHandleActivity extends BaseActivity implements View.OnClickLis
 //        }
     }
 
-    private class MessageAdapter extends BaseAdapter {
+    private class OrderListAdapter extends BaseAdapter {
         private LayoutInflater inflater;
         private List<OrderInfo> messageInfos;
 
-        public MessageAdapter(Context context) {
+        public OrderListAdapter(Context context) {
             inflater = LayoutInflater.from(context);
             messageInfos = new ArrayList<>();
         }

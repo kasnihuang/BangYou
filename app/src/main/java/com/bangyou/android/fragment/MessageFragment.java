@@ -1,11 +1,13 @@
 package com.bangyou.android.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -13,8 +15,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.bangyou.android.R;
+import com.bangyou.android.activity.OrderDetailActivity;
 import com.bangyou.android.dao.MessageInfo;
 import com.bangyou.android.datalayer.DataService;
+import com.bangyou.android.utils.Constants;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +47,14 @@ public class MessageFragment extends BaseFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mLvMessage = (ListView) view.findViewById(R.id.lv_message);
+        mLvMessage.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(mActivity, OrderDetailActivity.class);
+                intent.putExtra(Constants.ORDER_IS_ROB, true);
+                startActivity(intent);
+            }
+        });
         mMessageAdapter = new MessageAdapter(mActivity);
         mLvMessage.setAdapter(mMessageAdapter);
     }

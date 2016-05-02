@@ -21,7 +21,7 @@ public class BaseTitleBar extends RelativeLayout implements View.OnClickListener
     protected ImageView mIBtnLeft;
     protected ImageView mIBtnRight;
     protected TextView mTitleView = null;
-//    protected TextView mSecTitleView;
+    protected TextView mSecTitleView;
     protected HeaderClickListener mHeaderClickListener;
     protected Context mContext;
 //    protected View mDividerView;
@@ -48,7 +48,7 @@ public class BaseTitleBar extends RelativeLayout implements View.OnClickListener
         mIBtnRight = (ImageView) findViewById(R.id.btnTopRightImage);
         mIBtnRight.setOnClickListener(this);
         mTitleView = (TextView) findViewById(R.id.title);
-//        mSecTitleView = (TextView) findViewById(R.id.tv_sec_title);
+        mSecTitleView = (TextView) findViewById(R.id.tv_sec_title);
 //        mDividerView = findViewById(R.id.divider);
     }
 
@@ -83,7 +83,7 @@ public class BaseTitleBar extends RelativeLayout implements View.OnClickListener
         mTitleView.setText(stringId);
     }
 
-    /*public void setSecTitleText(String name) {
+    public void setSecTitleText(String name) {
         mSecTitleView.setText(name);
     }
 
@@ -91,7 +91,7 @@ public class BaseTitleBar extends RelativeLayout implements View.OnClickListener
         mSecTitleView.setText(stringId);
     }
 
-    public void setDividerColor(int color) {
+    /*public void setDividerColor(int color) {
         mDividerView.setBackgroundColor(getResources().getColor(color));
     }*/
 
