@@ -15,12 +15,15 @@ import android.widget.TextView;
 
 import com.bangyou.android.R;
 import com.bangyou.android.dao.OrderInfo;
+import com.bangyou.android.datalayer.DataService;
 import com.bangyou.android.utils.Constants;
 import com.bangyou.android.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by kasni.huang on 4/26/16.
@@ -95,10 +98,18 @@ public class OrderHandleActivity extends BaseActivity implements View.OnClickLis
     }
 
     private void initData() {
-        mOrderInfoList.add(new OrderInfo("乐视TV机架安装1", new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis()), false, false, mOrderType));
-        mOrderInfoList.add(new OrderInfo("乐视xxxxxxxxxxxxxxxxxxTV机架安装2", new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis()), true, false, mOrderType));
-        mOrderInfoList.add(new OrderInfo("乐视TV机架安装3", new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis()), true, false, mOrderType));
-        mOrderInfoList.add(new OrderInfo("乐视TV机架安装4", new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis()), false, false, mOrderType));
+//        mOrderInfoList.add(new OrderInfo("乐视TV机架安装1", new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis()), false, false, mOrderType));
+//        mOrderInfoList.add(new OrderInfo("乐视xxxxxxxxxxxxxxxxxxTV机架安装2", new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis()), true, false, mOrderType));
+//        mOrderInfoList.add(new OrderInfo("乐视TV机架安装3", new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis()), true, false, mOrderType));
+//        mOrderInfoList.add(new OrderInfo("乐视TV机架安装4", new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis()), false, false, mOrderType));
+        mOrderInfoList.clear();
+        Map<String, OrderInfo> orderInfoMap = DataService.Instance().getOrders();
+        Iterator<OrderInfo> orderIter = orderInfoMap.values().iterator();
+        while(orderIter.hasNext()){
+            OrderInfo orderInfo = orderIter.next();
+            mOrderInfoList.add(orderInfo);
+        }
+
         mOrderHandleAdapter.updateData(mOrderInfoList);
     }
 

@@ -11,9 +11,6 @@ import com.bangyou.android.utils.Constants;
 import com.bangyou.android.utils.DataStoreUtil;
 import com.bangyou.android.utils.Utils;
 
-import org.joda.time.DateTime;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -96,11 +93,11 @@ public class DataServiceForData {
     private  void createOrders(){
         Resources res = m_context.getResources();
         String[]  orderTitles = res.getStringArray(R.array.orders);
-        String[]  addrList   = res.getStringArray(R.array.orders);
+        String[]  addrList   = res.getStringArray(R.array.orders_addr);
         String[]  contackers  = res.getStringArray(R.array.contacters);
-        String[]   contactTime = res.getStringArray(R.array.contact_time);
+        String[]  contactTime = res.getStringArray(R.array.contact_time);
         String[]  telNos = res.getStringArray(R.array.telNo);
-        DateTimeFormatter format = DateTimeFormat.forPattern(Constants.TIME_FORMAT);
+
         Map<String, OrderInfo> orderMap = new HashMap<String, OrderInfo>();
         for(int i = 0 ; i < orderTitles.length; ++i){
             String orderTitle = orderTitles[i];
@@ -109,10 +106,10 @@ public class DataServiceForData {
             orderInfo.setAddr(addrList[i%addrList.length]);
             orderInfo.setContactUser(contackers[i%contackers.length]);
             orderInfo.setContacted(false);
-            DateTime orderConcateTime = DateTime.parse(contactTime[i%contactTime.length], format);
-            orderInfo.setContactTime(new Date());
+            Date orderInstallTime = Utils.coverDateToString(contactTime[i%contactTime.length], Constants.TIME_FORMAT);
+            orderInfo.setContactTime(Utils.subDate(orderInstallTime, 24));
             orderInfo.setTeleNo(telNos[i%telNos.length]);
-            orderInfo.setInstallTime(new Date());
+            orderInfo.setInstallTime(orderInstallTime);
             orderMap.put(orderInfo.getUuid(), orderInfo);
         }
         DataService.Instance().setOrders(orderMap);
