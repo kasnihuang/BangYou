@@ -84,6 +84,7 @@ public class BaseTitleBar extends RelativeLayout implements View.OnClickListener
     }
 
     public void setSecTitleText(String name) {
+        mSecTitleView.setVisibility(VISIBLE);
         mSecTitleView.setText(name);
     }
 
