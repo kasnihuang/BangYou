@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/title_bar"
         android:layout_above="@id/btn_done"
-        android:gravity="center"
+        android:gravity="center_horizontal"
         android:orientation="vertical">
 
         <RelativeLayout
