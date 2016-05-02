@@ -3,7 +3,6 @@ package com.bangyou.android.datalayer;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.bangyou.android.R;
 import com.bangyou.android.dao.MessageInfo;
@@ -15,7 +14,6 @@ import com.bangyou.android.utils.Utils;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
-import org.joda.time.tz.UTCProvider;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -76,12 +74,19 @@ public class DataServiceForData {
         String[]  msg = res.getStringArray(R.array.messages);
         List<MessageInfo> msgList = new ArrayList<MessageInfo>();
         for(int i = 0 ; i < msg.length; ++i){
-            String title = msg[i].split("|")[0];
-            String subTile = msg[i].split("|")[1];
+            String[] msgs = msg[i].split("\\|");
+            String title   = msgs[0];
+            String subTile = msgs[1];
+            String msgType = msgs[2];
+
             MessageInfo msgInfo = new MessageInfo();
-            msgInfo.setMessageContent("content");
-            msgInfo.setTile(title);
-            msgInfo.setSubTitle(subTile);
+            msgInfo.setUid(Utils.uuidGenerate());
+            if(msgType.equals("order"))
+                msgInfo.setMessageType(MessageInfo.MSG_TYPE_ROB);
+            else
+                msgInfo.setMessageType(MessageInfo.MSG_TYPE_NORMAL);
+            msgInfo.setTitle(title);
+            msgInfo.setSubtitle(subTile);
             msgList.add(msgInfo);
         }
         DataService.Instance().setMessages(msgList);

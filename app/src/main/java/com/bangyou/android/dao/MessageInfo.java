@@ -8,36 +8,15 @@ public class MessageInfo {
     public static final int MSG_TYPE_ROB = 0;
     public static final int MSG_TYPE_NORMAL = 1;
     private String uid;
-    private String tile;
 
-    public String getSubTitle() {
-        return subTitle;
-    }
-
-    public void setSubTitle(String subTitle) {
-        this.subTitle = subTitle;
-    }
-
-    public String getTile() {
-        return tile;
-    }
-
-    public void setTile(String tile) {
-        this.tile = tile;
-    }
-
-    private String subTitle;
-
-
-
-    private String messageContent;
-    private String messageDetail;
+    private String title;
+    private String subtitle;
     private int messageType;
 
 
-    public MessageInfo(String messageContent, String messageDetail, int messageType) {
-        this.messageContent = messageContent;
-        this.messageDetail = messageDetail;
+    public MessageInfo(String title, String subtitle, int messageType) {
+        this.title = title;
+        this.subtitle = subtitle;
         this.messageType = messageType;
     }
     public String getUid() {
@@ -61,19 +40,19 @@ public class MessageInfo {
         this.messageType = messageType;
     }
 
-    public String getMessageContent() {
-        return messageContent;
+    public String getTitle() {
+        return title;
     }
 
-    public void setMessageContent(String messageContent) {
-        this.messageContent = messageContent;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getMessageDetail() {
-        return messageDetail;
+    public String getSubtitle() {
+        return subtitle;
     }
 
-    public void setMessageDetail(String messageDetail) {
-        this.messageDetail = messageDetail;
+    public void setSubtitle(String subtitle) {
+        this.subtitle = subtitle;
     }
 }

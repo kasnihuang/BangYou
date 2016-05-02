@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="messages">
-        <item>乐视TV进驻帮友平台|乐视TV挂架进驻邦有平台</item>
-        <item>你已经升级VIP 2 级|截止目前您已经完成120单服务安装...</item>
+        <item>乐歌 (Loctek)机架安装|移机,新安装|order</item>
+        <item>乐视TV进驻帮友平台|乐视TV挂架进驻帮友平台|msg</item>
+        <item>你已经升级VIP 2 级|截止目前您已经完成120单服务安装|msg</item>
     </string-array>
 
     <string-array name="orders">

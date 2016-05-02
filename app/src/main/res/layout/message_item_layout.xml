@@ -44,7 +44,6 @@
             android:ellipsize="end"
             android:lines="1"
             android:textSize="@dimen/font_18"
-            android:textStyle="bold"
             android:textColor="@android:color/black"
             android:text="xxxxxxxx"/>
 
@@ -62,6 +61,7 @@
             android:paddingBottom="@dimen/dimen_2"
             android:background="@drawable/tab_item_indicator"
             android:textSize="@dimen/font_13"
+            android:visibility="gone"
             android:textColor="@android:color/white"/>
 
         <TextView

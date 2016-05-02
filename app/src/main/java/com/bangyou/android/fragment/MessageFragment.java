@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.bangyou.android.R;
 import com.bangyou.android.dao.MessageInfo;
+import com.bangyou.android.datalayer.DataService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,12 +60,13 @@ public class MessageFragment extends BaseFragment {
 
     private void initData() {
         //TODO 如果正式数据时,且更新数据放到onResume中,如果数据是全新的数据,记得先清除当前数据,因为tab切换到第三屏再切回来时,onResume会被调用
-        mMessageInfoList.add(new MessageInfo("你已完成订单:乐视TV机架安装1", "新安装", MessageInfo.MSG_TYPE_NORMAL));
-        MessageInfo info = new MessageInfo("XX品牌代言服务", "新安装", MessageInfo.MSG_TYPE_ROB);
-        mMessageInfoList.add(0, info);
-        mMessageInfoList.add(new MessageInfo("你已完成订单:乐视xxxxxxxxxxxxxxxxxxTV机架安装2", "移机, 安装", MessageInfo.MSG_TYPE_NORMAL));
-        mMessageInfoList.add(new MessageInfo("你已完成订单:乐视TV机架安装3", "消息概要", MessageInfo.MSG_TYPE_NORMAL));
-        mMessageInfoList.add(new MessageInfo("你已完成订单:乐视TV机架安装4", "安装", MessageInfo.MSG_TYPE_NORMAL));
+//        mMessageInfoList.add(new MessageInfo("你已完成订单:乐视TV机架安装1", "新安装", MessageInfo.MSG_TYPE_NORMAL));
+//        MessageInfo info = new MessageInfo("XX品牌代言服务", "新安装", MessageInfo.MSG_TYPE_ROB);
+//        mMessageInfoList.add(0, info);
+//        mMessageInfoList.add(new MessageInfo("你已完成订单:乐视xxxxxxxxxxxxxxxxxxTV机架安装2", "移机, 安装", MessageInfo.MSG_TYPE_NORMAL));
+//        mMessageInfoList.add(new MessageInfo("你已完成订单:乐视TV机架安装3", "消息概要", MessageInfo.MSG_TYPE_NORMAL));
+//        mMessageInfoList.add(new MessageInfo("你已完成订单:乐视TV机架安装4", "安装", MessageInfo.MSG_TYPE_NORMAL));
+        mMessageInfoList = DataService.Instance().getMessages();
         mMessageAdapter.updateData(mMessageInfoList);
     }
 
@@ -113,8 +115,8 @@ public class MessageFragment extends BaseFragment {
                 viewHolder = (ViewHolder) convertView.getTag();
             }
             MessageInfo info = messageInfos.get(position);
-            viewHolder.tvContent.setText(info.getMessageContent());
-            viewHolder.tvDetail.setText(info.getMessageDetail());
+            viewHolder.tvContent.setText(info.getTitle());
+            viewHolder.tvDetail.setText(info.getSubtitle());
             if (info.getMessageType() == MessageInfo.MSG_TYPE_ROB) {
                 viewHolder.ivIcon.setImageResource(R.drawable.icon_message);
                 viewHolder.tvType.setText(R.string.tab_order);
