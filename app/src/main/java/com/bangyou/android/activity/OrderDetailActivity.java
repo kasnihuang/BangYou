@@ -128,6 +128,7 @@ public class OrderDetailActivity extends BaseActivity implements View.OnClickLis
                 mViewPhone.setVisibility(View.GONE);
                 mViewProgressTip.setVisibility(View.GONE);
                 mViewProgress.setVisibility(View.GONE);
+                //TODO 根据是否是抢单来显示不同的按钮
                 if (mIsRob) {
                     mViewButton.setVisibility(View.GONE);
                 } else {
