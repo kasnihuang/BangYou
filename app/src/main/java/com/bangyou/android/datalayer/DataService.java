@@ -9,6 +9,7 @@ import com.bangyou.android.db.DBHelper;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -43,6 +44,13 @@ public class DataService {
 
     public OrderInfo  getOrder(String orderId){
         return orders.get(orderId);
+    }
+    public OrderInfo  getRandOderInfo(){
+        Iterator<OrderInfo> orderIter = orders.values().iterator();
+        if(orderIter.hasNext()){
+            return orderIter.next();
+        }
+        return null;
     }
 
     public MessageInfo getMessage(String uid){

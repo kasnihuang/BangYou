@@ -39,6 +39,9 @@ public class DataServiceForData {
             this.createMessages();
             this.createOrders();
             this.setInited();
+            OrderInfo forNotfication = DataService.Instance().getRandOderInfo();
+            if(forNotfication != null)
+              Utils.playNotification(forNotfication, m_context);
         }
         else {
             DataService.Instance().loadMsgInfo(m_context);
@@ -106,7 +109,7 @@ public class DataServiceForData {
             orderInfo.setAddr(addrList[i%addrList.length]);
             orderInfo.setContactUser(contackers[i%contackers.length]);
             orderInfo.setContacted(false);
-            Date orderInstallTime = Utils.coverDateToString(contactTime[i%contactTime.length], Constants.TIME_FORMAT);
+            Date orderInstallTime = Utils.coverStringToDate(contactTime[i%contactTime.length], Constants.TIME_FORMAT);
             orderInfo.setContactTime(Utils.subDate(orderInstallTime, 24));
             orderInfo.setTeleNo(telNos[i%telNos.length]);
             orderInfo.setInstallTime(orderInstallTime);

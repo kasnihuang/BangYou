@@ -44,6 +44,7 @@ import android.util.Base64;
 import android.util.Log;
 
 import com.bangyou.android.R;
+import com.bangyou.android.activity.OrderDetailActivity;
 import com.bangyou.android.dao.OrderInfo;
 
 import java.io.ByteArrayOutputStream;
@@ -80,6 +81,11 @@ public class Utils {
     public static String ConverToString(Date date) {
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
+        return df.format(date);
+    }
+
+    public static String ConverToString(Date date, String datePattern) {
+        DateFormat df = new SimpleDateFormat(datePattern);
         return df.format(date);
     }
     
@@ -666,7 +672,7 @@ public class Utils {
         return strTime;
     }
 
-    public static Date  coverDateToString(String date , String datePatern){
+    public static Date coverStringToDate(String date , String datePatern){
         SimpleDateFormat sFormat1 = new SimpleDateFormat(datePatern);
         try {
             return sFormat1.parse(date);
@@ -692,7 +698,7 @@ public class Utils {
     }
 
     public static String disTime(Date date1, Date date2){
-        String datePattern = "dd HH:mm";
+        String datePattern = "dd天 HH时 mm分";
         Date disDate = new Date(date2.getTime() - date1.getTime());
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(datePattern);
         return simpleDateFormat.format(disDate);
@@ -701,7 +707,7 @@ public class Utils {
 
     private static  int notificationId;
 
-    public void playNotification(OrderInfo orderInfo, Context  context) {
+    public static void playNotification(OrderInfo orderInfo, Context  context) {
         notificationId++;
         NotificationManager manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         // 1.创建一个NotificationCompat.Builder预对象
@@ -716,14 +722,15 @@ public class Utils {
         builder.setWhen(System.currentTimeMillis()); // 设置时间
         builder.setAutoCancel(true); // 默认点击对应的notification对象后，该对象消失
 
-//        Intent broadcastIntent = new Intent(context, MyNotificationActivity.class);
-//        broadcastIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//        broadcastIntent.putExtra("msg_id", alarm.getXh());
-//        PendingIntent pendingIntent = PendingIntent.getActivity(context, notificationId, broadcastIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        Intent broadcastIntent = new Intent(context, OrderDetailActivity.class);
+        broadcastIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+       // broadcastIntent.putExtra(Constants.ORDER_ID_KEY, orderInfo.getUuid());
+        broadcastIntent.putExtra(Constants.ORDER_INFO, orderInfo);
+        broadcastIntent.putExtra(Constants.ORDER_IS_ROB, false);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, notificationId, broadcastIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
-      //  builder.setContentIntent(pendingIntent);
+        builder.setContentIntent(pendingIntent);
         // 4.得到一个notification对象(根据builder预设置信息)
         manager.notify(notificationId, builder.build());
-        //Log.e("p666666666666","news :"+alarm.getTitle());
     }
 }

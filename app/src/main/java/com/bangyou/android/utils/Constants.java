@@ -20,4 +20,5 @@ public class Constants {
      time  fomate
      */
     public static final String TIME_FORMAT = "yyyy-MM-dd HH:mm";
+    public static final String ORDER_ID_KEY="order_id_key";
 }

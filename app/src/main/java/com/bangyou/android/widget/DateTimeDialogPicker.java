@@ -3,6 +3,7 @@ package com.bangyou.android.widget;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.provider.SyncStateContract;
 import android.text.TextUtils;
 import android.widget.DatePicker;
 import android.widget.LinearLayout;
@@ -10,9 +11,12 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 
 import com.bangyou.android.R;
+import com.bangyou.android.utils.Constants;
+import com.bangyou.android.utils.Utils;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created by kasni.huang on 5/2/16.
@@ -43,11 +47,11 @@ public class DateTimeDialogPicker implements DatePicker.OnDateChangedListener,
     public void init(DatePicker datePicker, TimePicker timePicker) {
         Calendar calendar = Calendar.getInstance();
         if (!(null == initDateTime || "".equals(initDateTime))) {
-            calendar = this.getCalendarByInintData(initDateTime);
+            calendar = this.getCalendarByInintDataF(initDateTime);
         } else {
-            initDateTime = calendar.get(Calendar.YEAR) + "年"
-                    + calendar.get(Calendar.MONTH) + "月"
-                    + calendar.get(Calendar.DAY_OF_MONTH) + "日 "
+            initDateTime = calendar.get(Calendar.YEAR) + "-"
+                    + calendar.get(Calendar.MONTH) + "-"
+                    + calendar.get(Calendar.DAY_OF_MONTH) + "- "
                     + calendar.get(Calendar.HOUR_OF_DAY) + ":"
                     + calendar.get(Calendar.MINUTE);
         }
@@ -79,6 +83,7 @@ public class DateTimeDialogPicker implements DatePicker.OnDateChangedListener,
                 .setView(dateTimeLayout)
                 .setPositiveButton("设置", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
+                        onDateChanged(null, 0, 0, 0);
                         if (!TextUtils.isEmpty(dateTime)) {
                             inputDate.setText(dateTime + endTime);
                         }
@@ -106,7 +111,7 @@ public class DateTimeDialogPicker implements DatePicker.OnDateChangedListener,
         calendar.set(datePicker.getYear(), datePicker.getMonth(),
                 datePicker.getDayOfMonth(), timePicker.getCurrentHour(),
                 timePicker.getCurrentMinute());
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日 HH:mm");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
         dateTime = sdf.format(calendar.getTime());
         int minute = timePicker.getCurrentMinute();
@@ -126,6 +131,14 @@ public class DateTimeDialogPicker implements DatePicker.OnDateChangedListener,
      * @param initDateTime 初始日期时间值 字符串型
      * @return Calendar
      */
+    private Calendar getCalendarByInintDataF(String  initDateTime){
+        Calendar calendar = Calendar.getInstance();
+        Date date = Utils.coverStringToDate(initDateTime, Constants.TIME_FORMAT);
+        calendar.setTime(date);
+        return calendar;
+    }
+
+
     private Calendar getCalendarByInintData(String initDateTime) {
         Calendar calendar = Calendar.getInstance();
 

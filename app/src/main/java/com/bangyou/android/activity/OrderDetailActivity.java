@@ -12,7 +12,14 @@ import android.widget.TextView;
 import com.bangyou.android.R;
 import com.bangyou.android.dao.OrderInfo;
 import com.bangyou.android.utils.Constants;
+
 import com.bangyou.android.widget.DateTimeDialogPicker;
+
+import com.bangyou.android.utils.Utils;
+
+import java.util.Calendar;
+import java.util.Date;
+
 
 /**
  * Created by kasni.huang on 4/26/16.
@@ -59,8 +66,8 @@ public class OrderDetailActivity extends BaseActivity implements View.OnClickLis
             mIsRob = intent.getBooleanExtra(Constants.ORDER_IS_ROB, false);
         }
         setContentView(R.layout.order_detail_layout);
-        initData();
         initViews();
+        initData();
     }
 
     @Override
@@ -73,7 +80,18 @@ public class OrderDetailActivity extends BaseActivity implements View.OnClickLis
 
     //TODO 在initviews之前先把数据准备好,在initviews里面可以直接对TextView.setText(xxx)设置数据
     private void initData() {
+        mTvName.setText(mOrderInfo.getContactUser());
+        mTvPhone.setText(mOrderInfo.getTeleNo());
+        mTvAdress.setText(mOrderInfo.getAddr());
+        //wall
+        //mTvWallType.setText();
+        // mTvHangType.setText();
+        //
+        //mTvTvSize.setText();
+        mTvPreInstallTime.setText(Utils.ConverToString(mOrderInfo.getInstallTime(), Constants.TIME_FORMAT));
 
+        mTvSuggestTime.setText(Utils.subDate(mOrderInfo.getInstallTime(), 24,Constants.TIME_FORMAT));
+        mTvRemain.setText(Utils.disTime(mOrderInfo.getInstallTime(), new Date()));
     }
 
     private void initViews() {
@@ -151,9 +169,9 @@ public class OrderDetailActivity extends BaseActivity implements View.OnClickLis
                 break;
 
             case R.id.layout_time:
-                String[] time = mTvPreInstallTime.getText().toString().split("-");
+                String time = mTvPreInstallTime.getText().toString();//.split("-");
                 DateTimeDialogPicker dateTimePicKDialog = new DateTimeDialogPicker(
-                        this, time[0]);
+                        this, time);
                 dateTimePicKDialog.dateTimePicKDialog(mTvPreInstallTime);
                 /*Calendar calendarFrom = Calendar.getInstance();
                 DatePickerDialog datePickerDialogFrom = new DatePickerDialog(this, AlertDialog.THEME_HOLO_LIGHT, new DatePickerDialog.OnDateSetListener() {

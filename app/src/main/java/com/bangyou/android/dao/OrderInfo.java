@@ -11,6 +11,7 @@ import java.util.Date;
 public class OrderInfo implements Serializable {
     private String orderTitle;
     private int orderType;
+    private int orderTmpl;
 
     public OrderInfo() {
     }
@@ -41,6 +42,9 @@ public class OrderInfo implements Serializable {
 
     private String uuid;
 
+    public enum OrderTmpl{
+
+    }
     public enum State {
         NO_ACCEPTTED,
         ACCEPTED
