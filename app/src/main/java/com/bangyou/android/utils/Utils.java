@@ -716,10 +716,10 @@ public class Utils {
         builder.setWhen(System.currentTimeMillis()); // 设置时间
         builder.setAutoCancel(true); // 默认点击对应的notification对象后，该对象消失
 
-        Intent broadcastIntent = new Intent(context, MyNotificationActivity.class);
-        broadcastIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        broadcastIntent.putExtra("msg_id", alarm.getXh());
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, notificationId, broadcastIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+//        Intent broadcastIntent = new Intent(context, MyNotificationActivity.class);
+//        broadcastIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//        broadcastIntent.putExtra("msg_id", alarm.getXh());
+//        PendingIntent pendingIntent = PendingIntent.getActivity(context, notificationId, broadcastIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
       //  builder.setContentIntent(pendingIntent);
         // 4.得到一个notification对象(根据builder预设置信息)
