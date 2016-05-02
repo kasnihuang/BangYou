@@ -21,6 +21,7 @@
         android:layout_marginRight="@dimen/dimen_5"
         android:background="@drawable/btn_blue_color_selector"
         android:textColor="@android:color/white"
+        android:textSize="@dimen/font_18"
         android:text="@string/order_done"
         android:visibility="visible"/>
 

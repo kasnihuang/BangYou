@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.bangyou.android.R;
 import com.bangyou.android.dao.OrderInfo;
+import com.bangyou.android.datalayer.DataService;
 import com.bangyou.android.utils.Constants;
 
 import com.bangyou.android.widget.DateTimeDialogPicker;
@@ -143,12 +144,22 @@ public class OrderDetailActivity extends BaseActivity implements View.OnClickLis
                 mViewPhone.setVisibility(View.GONE);
                 mViewProgressTip.setVisibility(View.GONE);
                 mViewProgress.setVisibility(View.GONE);
+                mBtnDone.setVisibility(View.GONE);
                 //TODO 根据是否是抢单来显示不同的按钮
                 if (mIsRob) {
                     mViewButton.setVisibility(View.GONE);
                 } else {
                     mBtnRob.setVisibility(View.GONE);
                 }
+                break;
+
+            case Constants.ORDER_TYPE_GRAB:
+                mViewPhone.setVisibility(View.GONE);
+                mViewProgressTip.setVisibility(View.GONE);
+                mViewProgress.setVisibility(View.GONE);
+                //TODO 根据是否是抢单来显示不同的按钮
+                mViewHandle.setVisibility(View.GONE);
+                mBtnDone.setVisibility(View.GONE);
                 break;
         }
     }
@@ -166,6 +177,9 @@ public class OrderDetailActivity extends BaseActivity implements View.OnClickLis
                 Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:"+
                     mTvPhone.getText()));
                 startActivity(intent);
+                mOrderInfo.setContacted(true);
+                DataService.Instance().addOrder(mOrderInfo);
+                DataService.Instance().saveOrder(OrderDetailActivity.this);
                 break;
 
             case R.id.layout_time:

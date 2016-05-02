@@ -17,7 +17,7 @@
     <string name="order_type_pending_accept">待接单</string>
     <string name="order_accepted">已接订单</string>
     <string name="order_type_accepted">已接单</string>
-    <string name="order_done">完工订单</string>
+    <string name="order_done">完成订单</string>
     <string name="order_type_done">完工单</string>
     <string name="order_accept">接收</string>
     <string name="order_refuse">放弃</string>

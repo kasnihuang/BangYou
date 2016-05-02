@@ -104,7 +104,14 @@ public class DataServiceForData {
         Map<String, OrderInfo> orderMap = new HashMap<String, OrderInfo>();
         for(int i = 0 ; i < orderTitles.length; ++i){
             String orderTitle = orderTitles[i];
-            OrderInfo orderInfo = new OrderInfo(orderTitle, Constants.ORDER_TYPE_ACCEPTED);
+            OrderInfo orderInfo = null;
+            if(i == 3)
+               orderInfo = new OrderInfo(orderTitle, Constants.ORDER_TYPE_PENDING_ACCEPT);
+            else if(i == 2)
+                orderInfo = new OrderInfo(orderTitle, Constants.ORDER_TYPE_GRAB);
+            else
+                orderInfo = new OrderInfo(orderTitle, Constants.ORDER_TYPE_ACCEPTED);
+
             orderInfo.setUuid(Utils.uuidGenerate());
             orderInfo.setAddr(addrList[i%addrList.length]);
             orderInfo.setContactUser(contackers[i%contackers.length]);

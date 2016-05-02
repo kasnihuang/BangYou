@@ -52,9 +52,10 @@ public class MessageFragment extends BaseFragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 MessageInfo info = (MessageInfo) mMessageAdapter.getItem(position);
                 if (info.getMessageType() == MessageInfo.MSG_TYPE_ROB) {
-                    Intent intent = new Intent(mActivity, OrderDetailActivity.class);
-                    intent.putExtra(Constants.ORDER_IS_ROB, true);
-                    startActivity(intent);
+                  //  Intent intent = new Intent(mActivity, OrderDetailActivity.class);
+                  //  intent.putExtra(Constants.ORDER_IS_ROB, true);
+                    //startActivity(intent);
+                   // OrderDetailActivity.openOrderDetailActivity(mActivity,info,true);
                 }
             }
         });
