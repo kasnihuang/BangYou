@@ -1,24 +1,28 @@
 package com.bangyou.android.activity;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bangyou.android.R;
 import com.bangyou.android.dao.OrderInfo;
 import com.bangyou.android.datalayer.DataService;
 import com.bangyou.android.utils.Constants;
-
+import com.bangyou.android.utils.Utils;
 import com.bangyou.android.widget.DateTimeDialogPicker;
 
-import com.bangyou.android.utils.Utils;
-
-import java.util.Calendar;
 import java.util.Date;
 
 
@@ -44,10 +48,12 @@ public class OrderDetailActivity extends BaseActivity implements View.OnClickLis
     private View mViewProgress;
     private View mViewHandle;
     private View mViewButton;
+    private View mDialogView;
     private Button mBtnAccept;
     private Button mBtnRefuse;
     private Button mBtnRob;
     private Button mBtnDone;
+    private AlertDialog mCodeDialog;
 
     private boolean mIsRob = false;
 
@@ -96,6 +102,7 @@ public class OrderDetailActivity extends BaseActivity implements View.OnClickLis
     }
 
     private void initViews() {
+        mDialogView = LayoutInflater.from(this).inflate(R.layout.order_done_dialog, null);
         mTvName = (TextView) findViewById(R.id.tv_name);
         mTvPhone = (TextView) findViewById(R.id.tv_phone);
         mTvAdress = (TextView) findViewById(R.id.tv_address);
@@ -217,8 +224,41 @@ public class OrderDetailActivity extends BaseActivity implements View.OnClickLis
                 break;
 
             case R.id.btn_done:
-
+                if (mCodeDialog == null) {
+                    initDialog();
+                }
+                mCodeDialog.show();
+                final EditText editText = (EditText) mDialogView.findViewById(R.id.et_code);
+                mCodeDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        String code = editText.getText().toString();
+                        if (TextUtils.isEmpty(code)) {
+                            editText.requestFocus();
+                            Toast.makeText(OrderDetailActivity.this, R.string.order_input_verify_code, Toast.LENGTH_LONG).show();
+                        } else {
+                            if (isCodeInvalid(editText.getText().toString())) {
+                                editText.setText("");
+                                mCodeDialog.dismiss();
+                            } else {
+                                Toast.makeText(OrderDetailActivity.this, R.string.order_error_verify_code, Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    }
+                });
                 break;
         }
+    }
+
+    private void initDialog() {
+        mCodeDialog = new AlertDialog.Builder(this)
+                .setTitle(R.string.order_verify_code)
+                .setView(mDialogView)
+                .setPositiveButton(R.string.sure, null).create();
+    }
+
+    private boolean isCodeInvalid(String code) {
+        //Todo 在此处增加判断验证码是否正确的代码,当前默认返回true
+        return true;
     }
 }

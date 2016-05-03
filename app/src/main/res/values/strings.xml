@@ -6,6 +6,7 @@
     <string name="tab_my_profile">我的</string>
     <string name="title_my_profile">个人信息</string>
     <string name="menu_more_than_99">99+</string>
+    <string name="sure">确定</string>
 
     <!--Message-->
     <string name="message_rob_order">抢单</string>
@@ -47,6 +48,10 @@
     <string name="order_detail_done">点击完成</string>
     <string name="order_detail_phone_customer">联系客户</string>
     <string name="order_detail_install">上门安装</string>
+    <string name="order_verify_code">请输入验证码</string>
+    <string name="order_input_verify_code">未输入验证码</string>
+    <string name="order_error_verify_code">验证码错误</string>
+
     <!--My profile-->
     <string name="my_profile_info">基本信息</string>
     <string name="my_profile_server">服务信息</string>
