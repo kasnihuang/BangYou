@@ -102,7 +102,7 @@ public class OrderDetailActivity extends BaseActivity implements View.OnClickLis
     }
 
     private void initViews() {
-        mDialogView = LayoutInflater.from(this).inflate(R.layout.order_done_dialog, null);
+        mDialogView = LayoutInflater.from(this).inflate(R.layout.custom_dialog, null);
         mTvName = (TextView) findViewById(R.id.tv_name);
         mTvPhone = (TextView) findViewById(R.id.tv_phone);
         mTvAdress = (TextView) findViewById(R.id.tv_address);
@@ -182,7 +182,7 @@ public class OrderDetailActivity extends BaseActivity implements View.OnClickLis
         switch (v.getId()) {
             case R.id.layout_phone:
                 Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:"+
-                    mTvPhone.getText()));
+                        mTvPhone.getText()));
                 startActivity(intent);
                 mOrderInfo.setContacted(true);
                 DataService.Instance().addOrder(mOrderInfo);
