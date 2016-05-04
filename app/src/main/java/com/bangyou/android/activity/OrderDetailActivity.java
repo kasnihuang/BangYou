@@ -183,7 +183,7 @@ public class OrderDetailActivity extends BaseActivity implements View.OnClickLis
             case R.id.layout_phone:
                 Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:"+
                     mTvPhone.getText()));
-                startActivity(intent);
+                this.startActivity(intent);
                 mOrderInfo.setContacted(true);
                 DataService.Instance().addOrder(mOrderInfo);
                 DataService.Instance().saveOrder(OrderDetailActivity.this);
@@ -212,15 +212,18 @@ public class OrderDetailActivity extends BaseActivity implements View.OnClickLis
                 break;
 
             case R.id.btn_accept:
-
+                Toast.makeText(this, "已接收", Toast.LENGTH_LONG).show();
+                this.finish();
                 break;
 
             case R.id.btn_refuse:
-
+                Toast.makeText(this, "已放弃", Toast.LENGTH_LONG).show();
+                this.finish();
                 break;
 
             case R.id.btn_rob_order:
-
+                Toast.makeText(this, "抢单成功", Toast.LENGTH_LONG).show();
+                this.finish();
                 break;
 
             case R.id.btn_done:
