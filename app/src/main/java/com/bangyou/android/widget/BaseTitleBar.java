@@ -20,6 +20,8 @@ public class BaseTitleBar extends RelativeLayout implements View.OnClickListener
     protected Button mBtnRight;
     protected ImageView mIBtnLeft;
     protected ImageView mIBtnRight;
+    protected View mLeftButtonView;
+    protected View mRightButtonView;
     protected TextView mTitleView = null;
     protected TextView mSecTitleView;
     protected HeaderClickListener mHeaderClickListener;
@@ -49,6 +51,8 @@ public class BaseTitleBar extends RelativeLayout implements View.OnClickListener
         mIBtnRight.setOnClickListener(this);
         mTitleView = (TextView) findViewById(R.id.title);
         mSecTitleView = (TextView) findViewById(R.id.tv_sec_title);
+        mLeftButtonView = findViewById(R.id.layout_left_button);
+        mRightButtonView = findViewById(R.id.layout_right_button);
 //        mDividerView = findViewById(R.id.divider);
     }
 

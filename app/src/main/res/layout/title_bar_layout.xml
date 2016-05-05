@@ -6,8 +6,10 @@
     android:background="@color/palette_green_1">
 
     <RelativeLayout
+        android:id="@+id/layout_left_button"
         android:layout_width="@dimen/dimen_70"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:visibility="gone">
 
         <Button
             android:id="@+id/btnTopLeft"
@@ -66,9 +68,11 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/layout_right_button"
         android:layout_width="@dimen/dimen_70"
         android:layout_height="match_parent"
-        android:layout_alignParentRight="true">
+        android:layout_alignParentRight="true"
+        android:visibility="gone">
 
         <Button
             android:id="@+id/btnTopRight"
